@@ -14,5 +14,20 @@ class Bootstrap implements BootstrapInterface
          * (вместо указания в файле config/web.php
          */
         $app->setModule('docs', 'openecontmd\docs_api\modules\docs\Module');
+
+//	?????????????????????????????????????????
+        $app->getUrlManager()->addRules([
+
+            '<controller:\w+>' => '<controller>/index',
+            '<controller:\w+>/<id:\d+>'=>'<controller>/view',
+            '<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
+            '<controller:\w+>/<action:\w+>'=>'<controller>/<action>'
+
+        ], false);
+
+
+
     }
+
+
 }
